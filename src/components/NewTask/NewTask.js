@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import Section from "../UI/Section";
 import TaskForm from "./TaskForm";
 
-const NewTask = () => {
+const NewTask = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const enterTaskHandler = async () => {
+  const enterTaskHandler = async (tasktext) => {
     setIsLoading(true);
     setError(null);
 
     try {
       const reponse = await fetch(
-        "https://react-http-6b4a6.firebaseio.com/tasks.json",
+        "https://react-http-36f5f-default-rtdb.firebaseio.com/tasks.json",
         {
           method: "POST",
           body: JSON.stringify({ text: tasktext }),
@@ -27,6 +27,11 @@ const NewTask = () => {
       }
 
       const data = await reponse.json();
+
+      const generateId = data.name;
+      const createdTask = { id: generateId, text: tasktext };
+
+      props.onAddTask(createdTask);
     } catch (err) {
       setError(err.message || "Something went wrong!");
     }
