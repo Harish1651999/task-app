@@ -11,7 +11,7 @@ const NewTask = (props) => {
     setError(null);
 
     try {
-      const reponse = await fetch(
+      const response = await fetch(
         "https://react-http-36f5f-default-rtdb.firebaseio.com/tasks.json",
         {
           method: "POST",
@@ -22,11 +22,11 @@ const NewTask = (props) => {
         }
       );
 
-      if (!reponse.ok) {
+      if (!response.ok) {
         throw new Error("Request Failed!");
       }
 
-      const data = await reponse.json();
+      const data = await response.json();
 
       const generateId = data.name;
       const createdTask = { id: generateId, text: tasktext };

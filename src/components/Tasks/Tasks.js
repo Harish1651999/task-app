@@ -10,7 +10,7 @@ const Tasks = (props) => {
     tasklist = (
       <ul>
         {props.items.map((task) => (
-          <TaskItem key={task.key}>{task.text}</TaskItem>
+          <TaskItem key={task.id}>{task.text}</TaskItem>
         ))}
       </ul>
     );
