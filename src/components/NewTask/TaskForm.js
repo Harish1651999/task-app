@@ -11,8 +11,6 @@ const TaskForm = (props) => {
     if (enteredValue.trim().length > 0) {
       props.onEnterTask(enteredValue);
     }
-
-    console.log(enteredValue);
   };
 
   return (

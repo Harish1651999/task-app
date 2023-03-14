@@ -23,8 +23,6 @@ function App() {
 
       const data = await response.json();
 
-      console.log(data);
-
       const loadedTasks = [];
 
       for (const taskKey in data) {
