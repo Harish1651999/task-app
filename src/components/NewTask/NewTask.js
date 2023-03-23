@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import useHttp from "../hooks/use-http";
 import Section from "../UI/Section";
 import TaskForm from "./TaskForm";
 
 const NewTask = (props) => {
+  useHttp();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
